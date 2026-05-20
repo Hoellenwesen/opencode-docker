@@ -1,4 +1,4 @@
-FROM node:24.13.1-bookworm
+FROM node:24.15.0-bookworm
 
 ARG OPENCODE_VERSION=latest
 
