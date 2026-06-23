@@ -30,4 +30,4 @@ RUN mkdir -p /home/opencode/.local/share/opencode/ && \
 # switch to non-root user
 USER opencode
 
-# docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/pilinux/opencode:0.0.1 --output type=docker .
+# docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/hoellenwesen/opencode:0.0.1 --output type=docker .
