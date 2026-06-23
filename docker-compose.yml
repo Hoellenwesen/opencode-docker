@@ -1,7 +1,7 @@
 name: dev
 services:
   opencode:
-    image: ghcr.io/pilinux/opencode:1.2.5
+    image: ghcr.io/hoellenwesen/opencode:latest
     container_name: opencode
 
     # listen on all interfaces INSIDE the container
