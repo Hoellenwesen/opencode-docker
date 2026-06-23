@@ -1,6 +1,6 @@
-FROM node:24.15.0-bookworm
+FROM node:24.17.0-trixie-slim
 
-ARG OPENCODE_VERSION=latest
+ARG OPENCODE_VERSION=1.17.9
 
 # set working directory
 WORKDIR /app
