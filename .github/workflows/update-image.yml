@@ -46,7 +46,7 @@ jobs:
         id: current
         run: |
           read_image_version() {
-            docker run --rm "ghcr.io/Hoellenwesen/opencode:$1" opencode --version 2>/dev/null \
+            docker run --rm "ghcr.io/hoellenwesen/opencode:$1" opencode --version 2>/dev/null \
               | sed -n 's/^v//; /^[0-9]\+\.[0-9]\+\.[0-9]\+$/p' \
               | tail -1
           }
@@ -98,7 +98,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/Hoellenwesen/opencode
+          images: ghcr.io/hoellenwesen/opencode
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -119,7 +119,7 @@ jobs:
           build-args: |
             OPENCODE_VERSION=${{ needs.check.outputs.version }}
           labels: ${{ steps.meta.outputs.labels }}
-          outputs: type=image,name=ghcr.io/Hoellenwesen/opencode,push-by-digest=true,name-canonical=true,push=true
+          outputs: type=image,name=ghcr.io/hoellenwesen/opencode,push-by-digest=true,name-canonical=true,push=true
 
       - name: Export digest
         run: |
@@ -164,10 +164,10 @@ jobs:
         working-directory: /tmp/digests
         run: |
           docker buildx imagetools create \
-            -t ghcr.io/Hoellenwesen/opencode:${{ needs.check.outputs.version }} \
-            -t ghcr.io/Hoellenwesen/opencode:latest \
-            $(printf 'ghcr.io/Hoellenwesen/opencode@sha256:%s ' *)
+            -t ghcr.io/hoellenwesen/opencode:${{ needs.check.outputs.version }} \
+            -t ghcr.io/hoellenwesen/opencode:latest \
+            $(printf 'ghcr.io/hoellenwesen/opencode@sha256:%s ' *)
 
       - name: Inspect image
         run: |
-          docker buildx imagetools inspect ghcr.io/Hoellenwesen/opencode:${{ needs.check.outputs.version }}
+          docker buildx imagetools inspect ghcr.io/hoellenwesen/opencode:${{ needs.check.outputs.version }}
